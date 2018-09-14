@@ -40,7 +40,7 @@ public class LogInServlet {
 				case "company"	: CompanyFacadeF copmany = (CompanyFacadeF)facade;
 				System.out.println("Company logged logged");
 				}
-				return "you got it";
+				return "you got it , you are logged IN ";
 			}
 			else {
 				return "no facade";
