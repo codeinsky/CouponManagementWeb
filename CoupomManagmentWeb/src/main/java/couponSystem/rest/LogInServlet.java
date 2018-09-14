@@ -17,9 +17,10 @@ import facades.CustomerFacadeF;
 public class LogInServlet {
 	HelperMethodsDAO helper = new HelperMethodsDAO();
 	ClientCouponFacade facade ; 
+	String directURL=null;
 	
 	@RequestMapping(value="/LogIn" , method = RequestMethod.POST)
-	public @ResponseBody String logIn(@RequestParam String userType, @RequestParam String name, @RequestParam String pwd) {
+	public  String logIn(@RequestParam String userType, @RequestParam String name, @RequestParam String pwd) {
 		try {
 			facade = helper.logIn(userType, name, pwd);
 		} catch (CouponSystemException e) {
@@ -31,19 +32,22 @@ public class LogInServlet {
 				
 				case "admin"    : AdminFacadeF admin = (AdminFacadeF)facade;
 				System.out.println("admin logged");
+				directURL = "http://localhost:8082/admin.html";
 				break;
 				
 				case "customer" : CustomerFacadeF customer = (CustomerFacadeF)facade;
 				System.out.println("Customer logged");
+				directURL = "http://localhost:8082/customer.html";
 				break;
 				
 				case "company"	: CompanyFacadeF copmany = (CompanyFacadeF)facade;
 				System.out.println("Company logged logged");
+				directURL = "http://localhost:8082/company.html" ; 
 				}
-				return "you got it , you are logged IN ";
+				return "redirect:" + directURL;
 			}
 			else {
-				return "no facade";
+				return "redirect:http://localhost:8082/failed.html";
 			}
 			
 		

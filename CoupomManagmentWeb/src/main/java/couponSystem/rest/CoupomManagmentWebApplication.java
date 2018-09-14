@@ -12,6 +12,6 @@ public class CoupomManagmentWebApplication {
 		SpringApplication.run(CoupomManagmentWebApplication.class, args);
 //		CouponSystem.CouponSystem system = CouponSystem.CouponSystem.getInstance();
 //		AdminFacadeF admin = (AdminFacadeF) system.logIn("admin", "admin", "1234");
-		
+//		
 	}
 }
