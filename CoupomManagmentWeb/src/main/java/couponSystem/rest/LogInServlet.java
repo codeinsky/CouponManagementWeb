@@ -1,5 +1,7 @@
 package couponSystem.rest;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +22,8 @@ public class LogInServlet {
 	String directURL=null;
 	
 	@RequestMapping(value="/LogIn" , method = RequestMethod.POST)
-	public  String logIn(@RequestParam String userType, @RequestParam String name, @RequestParam String pwd) {
+	public  String logIn(@RequestParam String userType, @RequestParam String name, @RequestParam String pwd , 
+			HttpServletRequest req) {
 		try {
 			facade = helper.logIn(userType, name, pwd);
 		} catch (CouponSystemException e) {
@@ -44,7 +47,10 @@ public class LogInServlet {
 				System.out.println("Company logged logged");
 				directURL = "http://localhost:8082/company.html" ; 
 				}
+        // 		if need to start session 				
+		//		req.getSession().setAttribute("facade", facade); 
 				return "redirect:" + directURL;
+				
 			}
 			else {
 				return "redirect:http://localhost:8082/failed.html";
