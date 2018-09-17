@@ -95,7 +95,7 @@ public class CustomerDBDAO implements CustomerDAO {
 				customer.setId(id);
 			}
 			else {
-				System.out.println("Customer with id = " +  id + "does not exsist");
+				System.out.println("Customer with id = " +  id + " does not exsist");
 			}
 		} catch (SQLException e) {
 			throw new CouponSystemException ("Failed to get Customer with id=" + id  ) ; 
