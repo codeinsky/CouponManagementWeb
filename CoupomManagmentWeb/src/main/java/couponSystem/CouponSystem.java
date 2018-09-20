@@ -1,4 +1,4 @@
-package CouponSystem;
+package couponSystem;
 
 import couponSystemException.CouponSystemException;
 import dao.CompanyDBDAO;

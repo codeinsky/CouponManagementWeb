@@ -1,4 +1,4 @@
-package CouponSystem;
+package couponSystem;
 
 import java.sql.Date;
 import java.util.Collection;
