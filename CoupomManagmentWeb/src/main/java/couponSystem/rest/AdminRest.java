@@ -17,22 +17,21 @@ import beans.Company;
 import beans.Customer;
 import facades.AdminFacadeF;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class AdminRest.
  * ADMIN FACADE METHODS : 
-
-1. CreateCompany : POST {company} ; /company - done , works 
-2. Remove Company: DELETE {company} /company - done , works but need to change to be removed by ID 
-3. Company Details Update : PUT {company} /company/id - done and works (need changed to get his page and then change)
-4. GetAll Companies : GET /company - done , works 
-5. Get Company by ID : GET {id}  /company/id - done and works 
-
-6. Add Customer : POST {customer} /customer/ - done and works
-7. Remove Customer : DELETE /customer - done and works 
-8. UpdateCustomer : PUT {customer}  - done and works
-9. GetCustomerList : GET - done and works 
-10. GetCustomer by ID : GET{id }
-
+ * 
+ * 1. createCompany(Company)
+ * 2. removeCompany(Company)
+ * 3. companyDetailsUpdate(Company)
+ * 4. getAllCompanies()
+ * 5. getCompany(long)
+ * 6. addCustomer(Customer)
+ * 7. removeCustomer(Customer)
+ * 8. updateCustomerDetails(Customer)
+ * 9. getCustomerList()
+ * 10.getCustomer(long)
  * 
  */
 
@@ -40,55 +39,115 @@ import facades.AdminFacadeF;
 
 @RestController 
 public class AdminRest {
+	
+	/** The admin. */
 	AdminFacadeF admin = new AdminFacadeF();
 	
 	//Company REST 
 	
-	@RequestMapping (value="/company" , method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void createCustomer(@RequestBody Company company) {
+	/**
+	 * Creates the company.
+	 *
+	 * @param company the company
+	 */
+	@RequestMapping (value="/admin/createCompany" , method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void createCompany(@RequestBody Company company) {
 		admin.createCompany(company);
 	}
 	
-	@RequestMapping (value="/company" , method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
-	public Collection<Company> getAllCopmanies(){
+	/**
+	 * Gets the all companies.
+	 *
+	 * @return the all companies
+	 */
+	@RequestMapping (value="/admin/getAllCompanies" , method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
+	public Collection<Company> getAllCompanies(){
 		return admin.getAllCompanies();
 	}
 	
-	@RequestMapping (value="/company" , method = RequestMethod.DELETE)
+	/**
+	 * Removes the company.
+	 *
+	 * @param company the company
+	 */
+	@RequestMapping (value="/admin/removeCompany" , method = RequestMethod.DELETE)
 	public void removeCompany (@RequestBody Company company) {
 		admin.removeCompany(company);
 		
 	}
-	@RequestMapping(value = "/company" , method = RequestMethod.PUT)
+	
+	/**
+	 * Update company.
+	 *
+	 * @param company the company
+	 */
+	@RequestMapping(value = "/admin/companyDetailsUpdate" , method = RequestMethod.PUT)
 	public void updateCompany(@RequestBody Company company) {
 		admin.companyDetailsUpdate(company);
 	}
 	
-	@RequestMapping(value="/company/{id}" , method = RequestMethod.GET)
-	public Company getComapnyById (@PathVariable("id") long id) {
+	/**
+	 * Gets the company by id.
+	 *
+	 * @param id the id
+	 * @return the company by id
+	 */
+	@RequestMapping(value="/admin/getCompany/{id}" , method = RequestMethod.GET)
+	public Company getCompanyById (@PathVariable("id") long id) {
 		return admin.getCompany(id);
 		
 		
 		//Customer REST 
 	}
-	@RequestMapping(value="/customer" , method = RequestMethod.POST , consumes = MediaType.APPLICATION_JSON_VALUE)
+	
+	/**
+	 * Creates the customer.
+	 *
+	 * @param customer the customer
+	 */
+	@RequestMapping(value="/admin/addCustomer" , method = RequestMethod.POST , consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void createCustomer(@RequestBody Customer customer) {
 		admin.addCustomer(customer);
 	}
-	@RequestMapping(value="/customer/{id}" , method = RequestMethod.GET)
+	
+	/**
+	 * Gets the customer by id.
+	 *
+	 * @param id the id
+	 * @return the customer by id
+	 */
+	@RequestMapping(value="/admin/getCustomer/{id}" , method = RequestMethod.GET)
 	public Customer getCustomerById(@PathVariable("id") long id) {
 		return admin.getCustomer(id);
 	}
-	@RequestMapping(value="/customer" ,  method = RequestMethod.DELETE , consumes = MediaType.APPLICATION_JSON_VALUE)
+	
+	/**
+	 * Removes the customer.
+	 *
+	 * @param customer the customer
+	 * Removes just by ID 
+	 */
+	@RequestMapping(value="/admin/removeCustomer" ,  method = RequestMethod.DELETE , consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void removeCustomer(@RequestBody Customer customer) {
 		admin.removeCustomer(customer);
 	}
 	
-	@RequestMapping (value="/customer" , method = RequestMethod.PUT )
+	/**
+	 * Update customer.
+	 *
+	 * @param customer the customer
+	 */
+	@RequestMapping (value="/admin/updateCustomerDetails" , method = RequestMethod.PUT )
 	public void updateCustomer (@RequestBody Customer customer) {
 		admin.updateCustomerDetails(customer);
 	}
-	@RequestMapping (value="/customer" , method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	
+	/**
+	 * Gets the customers.
+	 *
+	 * @return the customers
+	 */
+	@RequestMapping (value="/admin/getCustomerList" , method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Collection<Customer> getCustomers(){
 		return admin.getCustomerList();
 	}
