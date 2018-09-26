@@ -35,7 +35,7 @@ public class LogInServlet {
 				
 				case "admin"    : AdminFacadeF admin = (AdminFacadeF)facade;
 				System.out.println("admin logged");
-				directURL = "http://localhost:8082/admin.html";
+				directURL = "/admin.html";
 				break;
 				
 				case "customer" : CustomerFacadeF customer = (CustomerFacadeF)facade;

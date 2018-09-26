@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+    	console.log("hello");
+    	var type = $("#option").val();
+    	var user = $("#name").val();
+    	var pass = $("#pass").val();
+    	console.log(type , user , pass);
+    	$.post("http://localhost:8082/LogIn", { pwd: pass, userType: type , name: user } , 
+    			function(response){
+    		console.log(response);
+    		$("html").html(response);
+    	}); 
+    })
+});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Welcome to Coupon System LogIn Page TEST</h1>
+<hr>
+<br>
+<select id="option">
+<option>admin</option>
+<option>company</option>
+<option>customer</option>
+</select>
+<br>
+<span> User name: </span>
+<input id="name"   type="text">
+<br>
+<span>PassWord:</span>
+<input id="pass" type="password" >
+<br>
+<button>Submit</button>
+</body>
+
+</script>
+</html>
