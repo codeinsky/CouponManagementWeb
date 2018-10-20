@@ -1,6 +1,9 @@
 package beans;
 
+import java.io.Serializable;
 import java.sql.Date;
+
+import javax.xml.bind.annotation.XmlRootElement;
 // TODO: Auto-generated Javadoc
 
 /**
@@ -13,7 +16,8 @@ import java.sql.Date;
  *  - Contractor with all attributes   
  *  - Getter and Setters for all attributes  
  */ 
-public class Coupon {
+@XmlRootElement
+public class Coupon implements Serializable {
 	
 	/** The id. */
 	private long id;

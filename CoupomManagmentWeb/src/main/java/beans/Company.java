@@ -1,7 +1,11 @@
 package beans;
 
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+
+import javax.xml.bind.annotation.XmlRootElement;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -12,7 +16,8 @@ import java.util.Collection;
  *  - Constructor with each attribute 
  *  - Getters and setters for each Attribute 
  */
-public class Company {
+@XmlRootElement 
+public class Company implements Serializable  {
 	
 	/** The id. */
 	private long id;

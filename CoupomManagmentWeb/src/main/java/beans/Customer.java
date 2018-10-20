@@ -1,7 +1,10 @@
 package beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+
+import javax.xml.bind.annotation.XmlRootElement;
 // TODO: Auto-generated Javadoc
 
 /**
@@ -11,7 +14,8 @@ import java.util.Collection;
  *         Constructor with all attributes - Getter and Setters for each
  *         attribute
  */
-public class Customer {
+@XmlRootElement
+public class Customer implements Serializable {
 
 	/** The id. */
 	private long id;
@@ -32,6 +36,10 @@ public class Customer {
 	 * @param custName the cust name
 	 * @param password the password
 	 */
+	
+	public Customer() {
+		super();
+	}
 	public Customer(long id, String custName, String password) {
 		super();
 		this.id = id;

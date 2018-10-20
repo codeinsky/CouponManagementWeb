@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 	<style>
 	div{
  position: center;
  width: 30%;
  text-align: right;
-}
-
-
+		}
 	</style>
-<meta charset="UTF-8">
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#createCompany").click(function(){
+		console.log("clicked");
+		var id = $("#companyId").val();
+		var name = $("#companyName").val();
+		var password = $("#password").val();
+		var email = $("#email").val();
+		var arrey  = [{'id' : id , 'compName' : name , 'password' : password , 'email' : email}] ; 
+		var json  = JSON.stringify(arrey);
+		console.log(json);
+		
+		$.ajax({
+			url:"http://localhost:8082/admin/createCompany",
+			method:"POST",
+			dataType : 'jsonp',
+			data : json
+		})
+
+	});
+});
+</script>
 <title>Admin Facade Home Page</title>
 </head>
 <body>
@@ -32,7 +54,7 @@
 	<span>Email</span>
 	<input id="email" type="email">
 	<br>
-	<button>Create Company</button>
+	<button id="createCompany">Create Company</button>
 	
 </div>
 </body>

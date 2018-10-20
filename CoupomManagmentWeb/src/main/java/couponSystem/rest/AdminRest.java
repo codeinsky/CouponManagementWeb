@@ -7,6 +7,7 @@ package couponSystem.rest;
 import java.util.Collection;
 
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +37,7 @@ import facades.AdminFacadeF;
  */
 
 // example for JSON company : {"id":8,"compName":"Amdocs","password":"3333","email":"amdocs@amdocs.com"}
-
+@CrossOrigin("*")
 @RestController 
 public class AdminRest {
 	
